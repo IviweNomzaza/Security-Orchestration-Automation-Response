@@ -1,0 +1,6 @@
+{
+  "_note": "Replace with your real case template export if you customized severity/field mapping in TheHive. See README for the API endpoint to pull it from (differs between TheHive 4 and 5).",
+  "titlePrefix": "SOAR-AUTO",
+  "severity": 3,
+  "tags": ["wazuh", "virustotal", "malware"]
+}

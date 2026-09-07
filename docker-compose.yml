@@ -1,0 +1,34 @@
+# Skeleton only. Replace this file's contents with your actual working
+# ~/Shuffle/docker-compose.yml (copy it with:
+#   cp ~/Shuffle/docker-compose.yml ./docker-compose.yml
+# ) and then swap any hardcoded IPs/ports for the ${VARS} below so the
+# file is safe to publish.
+#
+# Known services in this deployment: shuffle-frontend, shuffle-backend,
+# shuffle-orborus, opensearch, plus a separate thehive container.
+
+version: "3"
+
+services:
+  shuffle-frontend:
+    image: ghcr.io/shuffle/shuffle-frontend:latest   # confirm tag against your install
+    ports:
+      - "3443:3443"
+    depends_on:
+      - shuffle-backend
+
+  shuffle-backend:
+    image: ghcr.io/shuffle/shuffle-backend:latest     # confirm tag against your install
+    depends_on:
+      - opensearch
+
+  shuffle-orborus:
+    image: ghcr.io/shuffle/shuffle-orborus:latest     # confirm tag against your install
+
+  opensearch:
+    image: opensearchproject/opensearch:latest        # confirm tag against your install
+
+  thehive:
+    image: thehiveproject/thehive:latest
+    ports:
+      - "9000:9000"

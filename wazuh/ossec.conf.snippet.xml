@@ -1,0 +1,11 @@
+<!--
+  This is the <integration> block only, pulled from /var/ossec/etc/ossec.conf.
+  Do not commit the full manager config — it contains mail relay creds and
+  other integration keys beyond this pipeline.
+-->
+<integration>
+  <name>custom-shuffle</name>
+  <hook_url>http://<SHUFFLE_IP>:3443/api/v1/hooks/<WEBHOOK_ID></hook_url>
+  <level>15</level>
+  <alert_format>json</alert_format>
+</integration>

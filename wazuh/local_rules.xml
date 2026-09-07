@@ -1,0 +1,7 @@
+<group name="virustotal,malware,">
+  <rule id="100100" level="15">
+    <if_sid>87105</if_sid>
+    <description>VirusTotal: CRITICAL - Malware confirmed - $(virustotal.source.file)</description>
+    <group>virustotal,malware,</group>
+  </rule>
+</group>

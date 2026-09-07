@@ -1,0 +1,9 @@
+{
+  "_note": "Replace this file with the real export. In Shuffle: open the workflow -> three-dot menu -> Export. This placeholder exists so the folder structure and README are correct before you drop the real file in.",
+  "name": "wazuh-thehive-malware-response",
+  "nodes": [
+    { "type": "webhook_trigger", "description": "Receives Wazuh level-15 JSON alerts" },
+    { "type": "condition", "description": "Checks data.virustotal.malicious >= 1" },
+    { "type": "http_request", "description": "POST to TheHive REST API to create a case" }
+  ]
+}
