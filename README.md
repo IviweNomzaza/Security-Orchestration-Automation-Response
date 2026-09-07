@@ -1,1 +1,1 @@
-# SOAR-EDR
+# SOAR-Shuffle-TheHive
