@@ -5,7 +5,6 @@
 
 This project extends the centralized Wazuh SIEM lab with an automated Security Orchestration, Automation, and Response (SOAR) pipeline. It bridges detection in Wazuh with low-code workflow automation in Shuffle and centralized case management in TheHive, so a confirmed malware detection on an endpoint results in an incident case in an analyst-facing dashboard with no manual triage step in between.
 
-A note on redaction: the manager/Shuffle/TheHive IP addresses, the Shuffle webhook ID, and any API bearer tokens have been anonymized or replaced with placeholders throughout. Rule IDs, alert levels, container names, and ports are reproduced exactly as configured.
 
 ## 1. Overview
 
@@ -34,7 +33,7 @@ graph TD
 
 ### Docker's role
 
-Docker is the deployment substrate for the two orchestration-layer services, not for Wazuh itself. It does three things for this build:
+Docker is the deployment is for the two orchestration-layer services, not for Wazuh itself. It does three things for this build:
 
 - **Isolation.** Shuffle's frontend, backend, execution worker (`orborus`), and its OpenSearch backing store run as separate containers, so a crash or restart in one doesn't take down the others, and each can be rebuilt independently.
 - **Reproducible deployment.** Shuffle is stood up by cloning the upstream repository and bringing the stack up with `docker-compose up -d`, rather than hand-installing a Go/Python/Node toolchain on the host.
@@ -112,10 +111,6 @@ cd /home/mintuser/eicar_test && wget https://secure.eicar.org/eicar.com.txt -O e
 ## 8. Findings & Operational Notes
 
 - **Container image drift is a real failure mode, not a footnote.** The `strangebee/thehive` to `thehiveproject/thehive:latest` correction, and the ARM64-on-amd64 emulation warning, are the kind of thing that silently breaks a demo between the time it's built and the time it's shown. Pin the working image tag in documentation, not just in the running compose file.
-- **`host.docker.internal` is a single point of coupling.** If TheHive is later moved into the same Docker network as Shuffle (rather than being reached as a host-exposed port), the API URL changes from `host.docker.internal:9000` to a Docker service name, and that's a config change, not a re-architecture. Worth flagging so it doesn't get missed on a redeploy.
-- **The enrichment check in Shuffle currently duplicates Wazuh's own verdict.** `data.virustotal.malicious >= 1` is checking the same VirusTotal signal Wazuh already alerted on. It's not wasted, since it protects against a future change that relaxes the SIEM-side rule, but the immediate value of this node is unlocked once a second, independent intel source is chained in alongside it (see roadmap).
-- **Free-tier API ceilings apply here the same way they did in the base SIEM lab.** VirusTotal's 4 requests/minute limit constrains how much of this pipeline can be exercised in a burst test; it's the same bottleneck noted in the manager write-up, now sitting on the SOAR side of the pipeline too.
-- **Bearer token handling.** The TheHive API key and the Shuffle webhook ID are both live secrets embedded in working configuration; rotate both before this repo or write-up goes public, same as the Gmail app password and VirusTotal key in the base SIEM lab.
 
 ## 9. MITRE ATT&CK Context
 
@@ -131,6 +126,6 @@ The EICAR-based validation exercises a narrow but real slice of the ATT&CK matri
 
 - MyDFIR, "SOC Automation Project (Home Lab)" 
 
-## Skills Demonstrated
+## Skills
 
 SOAR pipeline design and deployment · Docker/Docker Compose multi-container orchestration · container networking and image-architecture troubleshooting (host.docker.internal, ARM64/amd64 emulation) · custom Wazuh rule authoring with field interpolation · webhook-based system integration · low-code workflow logic (condition/branch nodes) in Shuffle · REST API integration and bearer-token authentication · incident case management with TheHive · end-to-end pipeline validation using a controlled malware simulation · MITRE ATT&CK mapping.
