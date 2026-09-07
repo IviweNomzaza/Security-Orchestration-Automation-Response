@@ -1,7 +1,7 @@
 # SOAR Automation Pipeline: Wazuh SIEM, Shuffle Orchestration & TheHive Incident Response
-<img width="250" height="250" alt="Screenshot 2026-09-03 at 14-48-44 images (PNG Image 447 × 447 pixels)" src="https://github.com/user-attachments/assets/16c0de53-9bb7-43d3-ab53-352981719051" />
-<img width="250" height="250" alt="Screenshot 2026-09-08 at 01-32-20 Shuffle png (PNG Image 360 × 360 pixels)" src="https://github.com/user-attachments/assets/51ddeb50-7268-4f28-a101-1110154d1bd8" />
-<img width="350" height="250" alt="Screenshot 2026-09-03 at 14-49-58 ea84a680-1b35-11ea-8bf5-f4a5870ea2e4 (JPEG Image 1280 × 640 pixels)" src="https://github.com/user-attachments/assets/7e2af96e-ee36-436a-a5e6-f04d29d700f2" />
+<img width="200" height="200" alt="Screenshot 2026-09-03 at 14-48-44 images (PNG Image 447 × 447 pixels)" src="https://github.com/user-attachments/assets/16c0de53-9bb7-43d3-ab53-352981719051" />
+<img width="200" height="200" alt="Screenshot 2026-09-08 at 01-32-20 Shuffle png (PNG Image 360 × 360 pixels)" src="https://github.com/user-attachments/assets/51ddeb50-7268-4f28-a101-1110154d1bd8" />
+<img width="280" height="200" alt="Screenshot 2026-09-03 at 14-49-58 ea84a680-1b35-11ea-8bf5-f4a5870ea2e4 (JPEG Image 1280 × 640 pixels)" src="https://github.com/user-attachments/assets/7e2af96e-ee36-436a-a5e6-f04d29d700f2" />
 
 This project extends the centralized Wazuh SIEM lab with an automated Security Orchestration, Automation, and Response (SOAR) pipeline. It bridges detection in Wazuh with low-code workflow automation in Shuffle and centralized case management in TheHive, so a confirmed malware detection on an endpoint results in an incident case in an analyst-facing dashboard with no manual triage step in between.
 
